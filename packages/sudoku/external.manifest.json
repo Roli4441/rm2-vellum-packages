@@ -1,0 +1,15 @@
+{
+    "name": "Sudoku",
+    "application": "sudoku",
+    "args": [],
+    "workingDirectory": "/home/root/xovi/exthome/appload/sudoku",
+    "environment": {
+        "HOME": "/home/root",
+        "QTFB_SHIM_MODEL": "0",
+        "QTFB_SHIM_INPUT_MODE": "NATIVE",
+        "LD_PRELOAD": "/home/root/shims/qtfb-shim.so"
+    },
+    "qtfb": true,
+    "aspectRatio": "original",
+    "disablesWindowedMode": true
+}
