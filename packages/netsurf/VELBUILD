@@ -1,21 +1,24 @@
 # Converted from Toltec package: https://github.com/toltec-dev/toltec/tree/stable/package/netsurf
 # Original Toltec maintainer: Alex Friesenhahn <rm-dev@alexfriesenhahn.de>
+# AppLoad integration based on: https://akselmo.dev/posts/netsurf-on-remarkable-2/
 
 maintainer="Roli4441 <roli4441@users.noreply.github.com>"
 pkgname=netsurf
 pkgver=0.4.0
-pkgrel=0
+pkgrel=1
 upstream_author="alex0809"
 category="apps"
 pkgdesc="A lightweight web browser for reMarkable tablets."
 url="https://github.com/alex0809/netsurf-reMarkable"
 arch="armv7"
 license="GPL-2.0-or-later"
+depends="appload"
 options="!check !fhs !strip !tracedeps"
 
 source="
 https://github.com/alex0809/netsurf-reMarkable/releases/download/v0.4/nsfb.tar.gz
 https://github.com/alex0809/netsurf-reMarkable/releases/download/v0.4/LICENSE
+external.manifest.json
 Choices
 "
 
@@ -24,13 +27,24 @@ unpack() {
 }
 
 package() {
+	local appdir="$pkgdir"/home/root/xovi/exthome/appload/netsurf
+
+	# AppLoad app directory
+	install -d "$appdir"
+
+	# AppLoad external manifest
+	install -Dm644 "$srcdir"/external.manifest.json \
+		"$appdir"/external.manifest.json
+
 	# NetSurf binary
-	install -Dm755 "$srcdir"/nsfb \
-		"$pkgdir"/home/root/.vellum/bin/netsurf
+	install -Dm755 "$srcdir"/nsfb "$appdir"/nsfb
+
+	# App icon (from netsurf resources)
+	install -Dm644 "$srcdir"/resources/netsurf.png "$appdir"/icon.png
 
 	# Browser resources (CSS, icons, HTML, CA bundle, etc.)
-	install -d "$pkgdir"/home/root/.vellum/share/netsurf
-	cp -r "$srcdir"/resources/* "$pkgdir"/home/root/.vellum/share/netsurf/
+	install -d "$appdir"/resources
+	cp -r "$srcdir"/resources/* "$appdir"/resources/
 
 	# Default configuration (font paths, scale, toolbar, etc.)
 	install -d "$pkgdir"/home/root/.netsurf
@@ -45,19 +59,38 @@ package() {
 }
 
 postinstall() {
-	echo "NetSurf installed. Run 'netsurf' from the terminal to launch."
-	echo "Note: Resource path is /home/root/.vellum/share/netsurf"
-	echo "      Config is at /home/root/.netsurf/Choices"
+	# Ensure libevdev.so.2 is available for the nsfb binary
+	local appdir="/home/root/xovi/exthome/appload/netsurf"
+	if [ ! -f "$appdir/libevdev.so.2" ]; then
+		# Try to copy from system library paths
+		for libpath in /usr/lib/libevdev.so.2 /lib/libevdev.so.2 /usr/lib/arm-linux-gnueabihf/libevdev.so.2; do
+			if [ -f "$libpath" ]; then
+				cp "$libpath" "$appdir/libevdev.so.2"
+				echo "Copied libevdev.so.2 from $libpath"
+				break
+			fi
+		done
+		if [ ! -f "$appdir/libevdev.so.2" ]; then
+			echo "WARNING: libevdev.so.2 not found on this system."
+			echo "NetSurf may not start. Please manually place libevdev.so.2 in:"
+			echo "  $appdir/"
+		fi
+	fi
+	echo ""
+	echo "NetSurf installed! Please refresh AppLoad to see it in the launcher."
 }
 
 postdeinstall() {
 	if [ "$VELLUM_PURGE" = "1" ]; then
-		rm -rf /home/root/.netsurf
+		rm -rf \
+			/home/root/.netsurf \
+			/home/root/xovi/exthome/appload/netsurf
 	fi
 }
 
 sha512sums="
 1c469400d2c1c7f4d048c451d309bf06776b5fbb9db91761e1998f8d2b2979a4341f51ee8578672f010ab53fc980853b3fd8d17c13bec9e9cf6a477fb19238d2  nsfb.tar.gz
 05097107bd0bf40a5e0d5c580899d335b217a0aea9a0704d26b1f3c6c978ddc4db43cf66bf5ff6657098ed9c8efc9f339ee4c5fd369fbcdb8f519ba95ec2e076  LICENSE
-66b8af8b452dedf250ba6b7656bbee5bfa8216cdd000c0ceceda84de3db3a6e430162a162518fe6a38759864788d964641243dca5321369b9537e8f4fba56414  Choices
+071c2923c5f9b95fae83c6c19aef856ead834342e0eda201808442ad68016871e301ac6322e6e3818a659e13c9066b79a1207ca9ca4bf2ab79dbd8427fef0e43  external.manifest.json
+4b655f612608a02ebdf1e93c40a3a9f353b0031673b2f352d23ca04a53b79d47148e360fd0ae9cb2ccf4f1469af84a461aadb5e29a0de491c76274ce233e4bb2  Choices
 "

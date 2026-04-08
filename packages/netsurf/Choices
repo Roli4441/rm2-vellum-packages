@@ -3,6 +3,7 @@ fb_download_directory:/home/root/Downloads
 fb_xochitl_restart_command:systemctl restart xochitl
 
 scale:150
+font_size:180
 enable_javascript:0
 
 fb_face_sans_serif:/usr/share/fonts/ttf/noto/NotoSans-Regular.ttf

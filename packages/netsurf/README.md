@@ -1,46 +1,84 @@
 # NetSurf - Vellum Package
 
-Lightweight web browser for reMarkable tablets, converted from the
-[Toltec package](https://github.com/toltec-dev/toltec/tree/stable/package/netsurf).
+Lightweight web browser for reMarkable 2 tablets, converted from the
+[Toltec package](https://github.com/toltec-dev/toltec/tree/stable/package/netsurf)
+with [AppLoad](https://github.com/asivery/rm-appload) integration.
 
 **Upstream:** https://github.com/alex0809/netsurf-reMarkable
 
-## Conversion Notes (Toltec -> Vellum)
+## How it works
 
-### What changed
+After installation, NetSurf appears as an app in AppLoad. It runs as a
+fullscreen framebuffer application using the `qtfb-shim` for display
+compatibility with the latest reMarkable OS.
+
+### File locations
+
+| What | Path |
+|------|------|
+| App directory | `/home/root/xovi/exthome/appload/netsurf/` |
+| Binary | `.../netsurf/nsfb` |
+| Resources | `.../netsurf/resources/` |
+| Config | `/home/root/.netsurf/Choices` |
+| AppLoad manifest | `.../netsurf/external.manifest.json` |
+
+### Dependencies
+
+- **appload** (Vellum package) - XOVI app launcher extension
+- **qtfb-shim** (installed by appload) - framebuffer compatibility
+- **libevdev.so.2** - auto-copied from system during install
+
+## Configuration
+
+Edit `/home/root/.netsurf/Choices` to customize:
+
+- `scale:150` - UI scale factor (increase for larger elements)
+- `font_size:180` - base font size for e-ink readability
+- `fb_osk:1` - on-screen keyboard enabled
+- `fb_toolbar_size:60` - toolbar height in pixels
+- Font paths (default: system Noto fonts)
+
+## Troubleshooting
+
+### NetSurf won't start
+
+1. Check `libevdev.so.2` is present in the app directory:
+   ```
+   ls /home/root/xovi/exthome/appload/netsurf/libevdev.so.2
+   ```
+   If missing, find it on your system:
+   ```
+   find / -name "libevdev.so*" 2>/dev/null
+   cp /usr/lib/libevdev.so.2 /home/root/xovi/exthome/appload/netsurf/
+   ```
+
+2. Verify the shim exists:
+   ```
+   ls /home/root/shims/qtfb-shim.so
+   ```
+
+### Fonts don't render
+
+The default config points to Noto system fonts at `/usr/share/fonts/ttf/noto/`.
+If those paths don't exist on your firmware version, update
+`/home/root/.netsurf/Choices` with correct font paths:
+```
+find /usr/share/fonts -name "*.ttf" 2>/dev/null
+```
+
+### App doesn't appear in launcher
+
+Refresh AppLoad after installation (swipe down or restart xochitl).
+
+## Conversion notes (Toltec -> Vellum)
 
 | Aspect | Toltec | Vellum |
 |--------|--------|--------|
 | Package format | `.ipk` (opkg) | `.apk` (Alpine) |
-| Recipe file | `package` (Bash) | `VELBUILD` (APKBUILD-based) |
-| Build method | From source via Docker | Pre-built binary from release |
-| Binary path | `/opt/bin/netsurf` | `/home/root/.vellum/bin/netsurf` |
-| Resources path | `/opt/usr/share/netsurf/` | `/home/root/.vellum/share/netsurf/` |
-| Config path | `/home/root/.netsurf/Choices` | `/home/root/.netsurf/Choices` (same) |
-| Version format | `0.4.0-4` (debian-style) | `0.4.0-r0` (alpine: pkgver + pkgrel) |
-| Checksums | SHA-256 | SHA-512 |
+| Binary path | `/opt/bin/netsurf` | `xovi/exthome/appload/netsurf/nsfb` |
+| Resources | `/opt/usr/share/netsurf/` | `.../appload/netsurf/resources/` |
+| Launcher | Draft (`.draft` file) | AppLoad (`external.manifest.json`) |
+| Display compat | `rm2fb-client` | `qtfb-shim` via AppLoad |
+| Fonts | DejaVu (Toltec package) | Noto (system fonts) |
 | Architecture | `rmall` | `armv7` |
-| Launcher | Draft (`.draft` file) | N/A (manual launch) |
-
-### Removed Toltec dependencies
-
-- `display` - Toltec display management (not available in Vellum)
-- `dejavu-fonts-ttf-*` - Font packages (replaced with system Noto fonts in Choices)
-- `rm2fb-client` - Framebuffer compatibility (via `flags=(patch_rm2fb)`)
-
-### Known limitations
-
-1. **Architecture**: Only `armv7` - the upstream project only provides 32-bit ARM builds.
-   No `aarch64` build exists for reMarkable Paper Pro.
-
-2. **Fonts**: The `Choices` file references Noto system fonts (`/usr/share/fonts/ttf/noto/`).
-   If fonts don't render correctly, update the paths in `/home/root/.netsurf/Choices`
-   to match your device's font locations.
-
-3. **No launcher integration**: The Toltec version used Draft launcher.
-   AppLoad integration could be added in a future version.
-
-4. **Framebuffer**: The Toltec version used `rm2fb` for display compatibility.
-   On newer firmware with Vellum, display handling may differ.
-
-5. **Old release**: v0.4 is from May 2021. The upstream project appears inactive.
+| Checksums | SHA-256 | SHA-512 |
