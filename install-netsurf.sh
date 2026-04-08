@@ -70,7 +70,7 @@ check_prerequisites() {
     echo ""
     echo "=== Elérhető fontok ==="
     if [ -d "/usr/share/fonts" ]; then
-        find /usr/share/fonts -name "*.ttf" 2>/dev/null | head -20
+        find /usr/share/fonts -name "*.ttf" 2>/dev/null | head -n 20
         ok "Fontok találhatók"
     else
         warn "Nincs font a /usr/share/fonts alatt!"
@@ -182,12 +182,12 @@ MANIFEST
     if [ ! -f "$CONFIGDIR/Choices" ]; then
         # Fontútvonalak detektálása
         local sans_font serif_font mono_font
-        sans_font=$(find /usr/share/fonts -iname "*NotoSans-Regular*" -o -iname "*DejaVuSans.ttf" 2>/dev/null | head -1)
-        serif_font=$(find /usr/share/fonts -iname "*NotoSerif-Regular*" -o -iname "*DejaVuSerif.ttf" 2>/dev/null | head -1)
-        mono_font=$(find /usr/share/fonts -iname "*NotoMono*" -o -iname "*DejaVuSansMono.ttf" 2>/dev/null | head -1)
+        sans_font=$(find /usr/share/fonts -iname "*NotoSans-Regular*" -o -iname "*DejaVuSans.ttf" 2>/dev/null | head -n 1)
+        serif_font=$(find /usr/share/fonts -iname "*NotoSerif-Regular*" -o -iname "*DejaVuSerif.ttf" 2>/dev/null | head -n 1)
+        mono_font=$(find /usr/share/fonts -iname "*NotoMono*" -o -iname "*DejaVuSansMono.ttf" 2>/dev/null | head -n 1)
 
         # Fallbackok
-        [ -z "$sans_font" ] && sans_font=$(find /usr/share/fonts -name "*.ttf" 2>/dev/null | head -1)
+        [ -z "$sans_font" ] && sans_font=$(find /usr/share/fonts -name "*.ttf" 2>/dev/null | head -n 1)
         [ -z "$serif_font" ] && serif_font="$sans_font"
         [ -z "$mono_font" ] && mono_font="$sans_font"
 
