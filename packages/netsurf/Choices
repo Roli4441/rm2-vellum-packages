@@ -4,7 +4,7 @@ fb_xochitl_restart_command:systemctl restart xochitl
 
 scale:150
 font_size:180
-enable_javascript:0
+enable_javascript:1
 
 fb_face_sans_serif:/usr/share/fonts/ttf/noto/NotoSans-Regular.ttf
 fb_face_sans_serif_bold:/usr/share/fonts/ttf/noto/NotoSans-Bold.ttf
