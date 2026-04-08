@@ -1,11 +1,11 @@
 {
     "name": "NetSurf",
     "application": "nsfb",
-    "args": ["-v", "-r", "/home/root/xovi/exthome/appload/netsurf/resources"],
+    "args": ["-v"],
     "workingDirectory": "/home/root/xovi/exthome/appload/netsurf",
     "environment": {
         "HOME": "/home/root",
-        "NETSURF_FB_RESPATH": "/home/root/xovi/exthome/appload/netsurf/resources/",
+        "NETSURFRES": "/home/root/xovi/exthome/appload/netsurf/resources/",
         "QTFB_SHIM_MODEL": "0",
         "QTFB_SHIM_INPUT_MODE": "NATIVE",
         "LD_LIBRARY_PATH": "/usr/lib:.",
