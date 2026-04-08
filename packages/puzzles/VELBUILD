@@ -1,0 +1,79 @@
+# Simon Tatham's Portable Puzzle Collection for reMarkable
+# Source: https://github.com/rmkit-dev/remarkable_puzzles
+
+maintainer="Roli4441 <roli4441@users.noreply.github.com>"
+pkgname=puzzles
+pkgver=0.2.4
+pkgrel=1
+upstream_author="rmkit-dev"
+category="games"
+pkgdesc="Simon Tatham's Portable Puzzle Collection - 16 logic games with pen input."
+url="https://github.com/rmkit-dev/remarkable_puzzles"
+arch="armv7"
+license="MIT"
+depends="appload"
+options="!check !fhs !strip !tracedeps"
+
+source="
+https://github.com/rmkit-dev/remarkable_puzzles/releases/download/v0.2.4/puzzles.tar.gz
+external.manifest.json
+"
+
+unpack() {
+	tar -xzf "$srcdir"/puzzles.tar.gz -C "$srcdir"
+}
+
+package() {
+	local appdir="$pkgdir"/home/root/xovi/exthome/appload/puzzles
+
+	# AppLoad app directory
+	install -d "$appdir"
+
+	# AppLoad external manifest
+	install -Dm644 "$srcdir"/external.manifest.json \
+		"$appdir"/external.manifest.json
+
+	# Puzzles binary
+	install -Dm755 "$srcdir"/puzzles "$appdir"/puzzles
+
+	# Config files
+	install -d "$appdir"/config
+	cp "$srcdir"/config/*.ini "$appdir"/config/
+
+	# Help files
+	install -d "$appdir"/help
+	cp "$srcdir"/help/*.txt "$appdir"/help/
+
+	# Icons
+	install -d "$appdir"/icons
+	cp "$srcdir"/icons/*.png "$appdir"/icons/
+
+	# Use the mines icon as app icon (recognizable puzzle grid)
+	install -Dm644 "$srcdir"/icons/mines.png "$appdir"/icon.png
+
+	# Save directory
+	install -d "$appdir"/save
+
+	# License
+	install -d "$pkgdir"/home/root/.vellum/licenses/$pkgname
+	echo "MIT" > "$pkgdir"/home/root/.vellum/licenses/$pkgname/LICENSE
+	echo "https://github.com/rmkit-dev/remarkable_puzzles" > \
+		"$pkgdir"/home/root/.vellum/licenses/$pkgname/SOURCES
+}
+
+postinstall() {
+	echo ""
+	echo "Puzzles installed! 16 logic games including mines, sudoku, tetris, and more."
+	echo "Please refresh AppLoad to see it in the launcher."
+}
+
+postdeinstall() {
+	if [ "$VELLUM_PURGE" = "1" ]; then
+		rm -rf /home/root/xovi/exthome/appload/puzzles
+	fi
+}
+
+sha512sums="
+05bc99a1e419b3eaf1bee4bf854df271bb3c484891de4afb2881886f8c7ce8f895d76b935ca83f42950bce3d257c1a896ef4d961825e64af55747177f7bae938  puzzles.tar.gz
+8307b3fc1f7855dec55a14203a93c34a2d9fa007ec9ef31a93b9e04b61dd9a4b36bbd5265142eca94ca64368603cecafc11751d3cbc8feeffe22f52ff9d36f07  external.manifest.json
+"

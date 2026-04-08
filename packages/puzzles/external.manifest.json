@@ -1,0 +1,19 @@
+{
+    "name": "Puzzles",
+    "application": "puzzles",
+    "args": [],
+    "workingDirectory": "/home/root/xovi/exthome/appload/puzzles",
+    "environment": {
+        "HOME": "/home/root",
+        "PUZZLES_CFG_DIR": "/home/root/xovi/exthome/appload/puzzles/config",
+        "PUZZLES_SAVE_DIR": "/home/root/xovi/exthome/appload/puzzles/save",
+        "PUZZLES_HELP_DIR": "/home/root/xovi/exthome/appload/puzzles/help",
+        "PUZZLES_ICON_DIR": "/home/root/xovi/exthome/appload/puzzles/icons",
+        "QTFB_SHIM_MODEL": "0",
+        "QTFB_SHIM_INPUT_MODE": "NATIVE",
+        "LD_PRELOAD": "/home/root/shims/qtfb-shim.so"
+    },
+    "qtfb": true,
+    "aspectRatio": "original",
+    "disablesWindowedMode": true
+}
