@@ -20,7 +20,7 @@ https://github.com/alex0809/netsurf-reMarkable/releases/download/v0.4/nsfb.tar.g
 https://github.com/alex0809/netsurf-reMarkable/releases/download/v0.4/LICENSE
 external.manifest.json
 Choices
-bookmarks.html
+welcome.html
 "
 
 unpack() {
@@ -47,8 +47,8 @@ package() {
 	install -d "$appdir"/resources
 	cp -r "$srcdir"/resources/* "$appdir"/resources/
 
-	# Custom bookmarks homepage
-	install -Dm644 "$srcdir"/bookmarks.html "$appdir"/bookmarks.html
+	# Custom welcome page with bookmarks (overwrites upstream)
+	install -Dm644 "$srcdir"/welcome.html "$appdir"/resources/en/welcome.html
 
 	# Default configuration (font paths, scale, toolbar, etc.)
 	install -d "$pkgdir"/home/root/.netsurf
@@ -97,5 +97,5 @@ sha512sums="
 05097107bd0bf40a5e0d5c580899d335b217a0aea9a0704d26b1f3c6c978ddc4db43cf66bf5ff6657098ed9c8efc9f339ee4c5fd369fbcdb8f519ba95ec2e076  LICENSE
 8f58e99b174d0244ea91361e6740d8012b0f99f009da81f922a4acab50ba20d95e9bcec0cbf7deea80dded4d0f2e3457f9e0a2786472762be9f210b877a732ea  external.manifest.json
 4d05e2ebdde7a9db98732ef24ced16ba9dcb795c93d4ddaf42601f20aa90d0333c1b76ef5d843a5cee35a2e108a07700190d04a68634fe970271490f15251616  Choices
-e375099907f94a6a82f895db90ab6e2cea8f60b466dda15f9afb43fb2ab2a25a4a6d599eed69d9983a73f1efff9acc8fdadb4bf4b143788d482a8a26254d345b  bookmarks.html
+2146283526061fdadc034e5af8d392615052ffcd17660b8a56ee85e74d39f84e7e6dbfb23f2fd49ba7e0c653f2471dfb3def057d08b64442b710362ff777ce0c  welcome.html
 "

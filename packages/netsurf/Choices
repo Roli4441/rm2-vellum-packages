@@ -1,4 +1,4 @@
-homepage_url:file:///home/root/xovi/exthome/appload/netsurf/bookmarks.html
+homepage_url:about:welcome
 fb_download_directory:/home/root/Downloads
 fb_xochitl_restart_command:systemctl restart xochitl
 
