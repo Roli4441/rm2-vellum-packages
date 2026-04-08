@@ -134,6 +134,7 @@ do_install() {
 
     # libevdev.so.2
     if [ ! -f "$APPDIR/libevdev.so.2" ]; then
+        # Először a rendszeren keressük
         for libpath in /usr/lib/libevdev.so.2 /lib/libevdev.so.2 /usr/lib/arm-linux-gnueabihf/libevdev.so.2; do
             if [ -f "$libpath" ]; then
                 cp "$libpath" "$APPDIR/libevdev.so.2"
@@ -143,7 +144,15 @@ do_install() {
         done
     fi
     if [ ! -f "$APPDIR/libevdev.so.2" ]; then
-        warn "libevdev.so.2 NEM másolva - kézzel kell megadni!"
+        # Ha nincs a rendszeren, letöltjük a repoból
+        echo "libevdev.so.2 nincs a rendszeren, letöltés a repoból..."
+        if curl -sL -o "$APPDIR/libevdev.so.2" \
+            "https://raw.githubusercontent.com/Roli4441/rm2-vellum-packages/claude/vellum-package-manager-kgTeQ/packages/netsurf/libevdev.so.2"; then
+            ok "libevdev.so.2 letöltve a repoból"
+        else
+            fail "libevdev.so.2 letöltése sikertelen!"
+            fail "NetSurf nem fog elindulni nélküle."
+        fi
     fi
 
     # AppLoad manifest
