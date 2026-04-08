@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<title>Kezdőlap</title>
+<style>
+body {
+  font-family: sans-serif;
+  background: #fff;
+  color: #111;
+  margin: 20px;
+  max-width: 1360px;
+}
+h1 { font-size: 28px; text-align: center; border-bottom: 2px solid #333; padding-bottom: 10px; }
+h2 { font-size: 18px; margin: 18px 0 8px 0; color: #333; border-bottom: 1px solid #aaa; padding-bottom: 4px; }
+.grid {
+  display: table;
+  width: 100%;
+}
+.row {
+  display: table-row;
+}
+.card {
+  display: table-cell;
+  width: 33%;
+  padding: 6px;
+  vertical-align: top;
+}
+.card a {
+  display: block;
+  border: 2px solid #555;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: #111;
+  background: #f0f0f0;
+}
+.card a:hover { background: #ddd; }
+.card .title { font-weight: bold; font-size: 15px; }
+.card .desc { font-size: 12px; color: #444; margin-top: 3px; }
+.card .url { font-size: 10px; color: #888; margin-top: 2px; }
+</style>
+</head>
+<body>
+
+<h1>NetSurf - Kedvencek</h1>
+
+<!-- ============ KERESOK ============ -->
+<h2>Keresok</h2>
+<div class="grid">
+<div class="row">
+  <div class="card"><a href="https://lite.duckduckgo.com/lite/">
+    <div class="title">DuckDuckGo Lite</div>
+    <div class="desc">Privat kereso, tiszta HTML, nincs JS</div>
+    <div class="url">lite.duckduckgo.com/lite/</div>
+  </a></div>
+  <div class="card"><a href="https://www.google.com/">
+    <div class="title">Google</div>
+    <div class="desc">Google kereso - alap HTML verzio</div>
+    <div class="url">google.com</div>
+  </a></div>
+  <div class="card"><a href="https://wiby.me/">
+    <div class="title">Wiby.me</div>
+    <div class="desc">Retro kereso egyszer weboldalakhoz</div>
+    <div class="url">wiby.me</div>
+  </a></div>
+</div>
+<div class="row">
+  <div class="card"><a href="https://frogfind.com/">
+    <div class="title">FrogFind</div>
+    <div class="desc">Kereso ami egyszeru HTML-re alakitja az eredmenyeket</div>
+    <div class="url">frogfind.com</div>
+  </a></div>
+  <div class="card"><a href="https://search.marginalia.nu/">
+    <div class="title">Marginalia</div>
+    <div class="desc">Fuggetlen kereso - szoveges weboldalak</div>
+    <div class="url">search.marginalia.nu</div>
+  </a></div>
+  <div class="card"><a href="https://www.mojeek.com/">
+    <div class="title">Mojeek</div>
+    <div class="desc">Fuggetlen kereso egyszeru felulettel</div>
+    <div class="url">mojeek.com</div>
+  </a></div>
+</div>
+</div>
+
+<!-- ============ HIREK ============ -->
+<h2>Hirek</h2>
+<div class="grid">
+<div class="row">
+  <div class="card"><a href="https://text.npr.org/">
+    <div class="title">NPR Text</div>
+    <div class="desc">NPR szoveges kiadasa - csak HTML</div>
+    <div class="url">text.npr.org</div>
+  </a></div>
+  <div class="card"><a href="https://brutalist.report/">
+    <div class="title">Brutalist Report</div>
+    <div class="desc">Hir-aggregator, csak cimsorok es linkek</div>
+    <div class="url">brutalist.report</div>
+  </a></div>
+  <div class="card"><a href="https://68k.news/">
+    <div class="title">68k.news</div>
+    <div class="desc">Google News szoveges proxy - regi bongeszokhoz</div>
+    <div class="url">68k.news</div>
+  </a></div>
+</div>
+<div class="row">
+  <div class="card"><a href="https://skimfeed.com/">
+    <div class="title">Skimfeed</div>
+    <div class="desc">Konnyu hir-aggregator</div>
+    <div class="url">skimfeed.com</div>
+  </a></div>
+  <div class="card"><a href="https://legiblenews.com/">
+    <div class="title">Legible News</div>
+    <div class="desc">Tisztan olvashato hirek</div>
+    <div class="url">legiblenews.com</div>
+  </a></div>
+  <div class="card"><a href="https://index.hu/24ora/rss/">
+    <div class="title">Index.hu RSS</div>
+    <div class="desc">Magyar hirek RSS feedben</div>
+    <div class="url">index.hu/24ora/rss/</div>
+  </a></div>
+</div>
+<div class="row">
+  <div class="card"><a href="https://telex.hu/rss">
+    <div class="title">Telex.hu RSS</div>
+    <div class="desc">Fuggetlen magyar hirportal RSS</div>
+    <div class="url">telex.hu/rss</div>
+  </a></div>
+  <div class="card"><a href="https://feeds.bbci.co.uk/news/rss.xml">
+    <div class="title">BBC News RSS</div>
+    <div class="desc">BBC hirek RSS feedben</div>
+    <div class="url">bbc.co.uk/news/rss.xml</div>
+  </a></div>
+  <div class="card"><a href="https://www.hvg.hu/rss">
+    <div class="title">HVG RSS</div>
+    <div class="desc">HVG magyar hirek RSS</div>
+    <div class="url">hvg.hu/rss</div>
+  </a></div>
+</div>
+</div>
+
+<!-- ============ KOZOSSEGI MEDIA ============ -->
+<h2>Kozossegi media</h2>
+<div class="grid">
+<div class="row">
+  <div class="card"><a href="https://news.ycombinator.com/">
+    <div class="title">Hacker News</div>
+    <div class="desc">Tech hirek es diskurzus - tokeletes NetSurf-re</div>
+    <div class="url">news.ycombinator.com</div>
+  </a></div>
+  <div class="card"><a href="https://old.reddit.com/">
+    <div class="title">Reddit (regi)</div>
+    <div class="desc">Reddit regi felulete - egyszerubb HTML</div>
+    <div class="url">old.reddit.com</div>
+  </a></div>
+  <div class="card"><a href="https://i.reddit.com/">
+    <div class="title">Reddit Compact</div>
+    <div class="desc">Reddit kompakt/mobil nezete</div>
+    <div class="url">i.reddit.com</div>
+  </a></div>
+</div>
+<div class="row">
+  <div class="card"><a href="https://lobste.rs/">
+    <div class="title">Lobsters</div>
+    <div class="desc">Tech link-aggregator, HN-szeru</div>
+    <div class="url">lobste.rs</div>
+  </a></div>
+  <div class="card"><a href="https://tildes.net/">
+    <div class="title">Tildes</div>
+    <div class="desc">Minimalista Reddit alternativa</div>
+    <div class="url">tildes.net</div>
+  </a></div>
+  <div class="card"><a href="https://www.metafilter.com/">
+    <div class="title">MetaFilter</div>
+    <div class="desc">Kozossegi blog, egyszeru HTML</div>
+    <div class="url">metafilter.com</div>
+  </a></div>
+</div>
+</div>
+
+<!-- ============ IDOJARAS ============ -->
+<h2>Idojaras</h2>
+<div class="grid">
+<div class="row">
+  <div class="card"><a href="https://wttr.in/Budapest">
+    <div class="title">wttr.in Budapest</div>
+    <div class="desc">ASCII idojaras-jelentes - nincs JS</div>
+    <div class="url">wttr.in/Budapest</div>
+  </a></div>
+  <div class="card"><a href="https://wttr.in/Budaors">
+    <div class="title">wttr.in Budaors</div>
+    <div class="desc">Helyi idojaras Budaorsre</div>
+    <div class="url">wttr.in/Budaors</div>
+  </a></div>
+  <div class="card"><a href="https://www.yr.no/en/forecast/daily-table/2-3054643/Hungary/Budapest/Budapest">
+    <div class="title">Yr.no Budapest</div>
+    <div class="desc">Norv. meteorologia - vilagszerte</div>
+    <div class="url">yr.no</div>
+  </a></div>
+</div>
+</div>
+
+<!-- ============ GOOGLE ============ -->
+<h2>Google szolgaltatasok</h2>
+<div class="grid">
+<div class="row">
+  <div class="card"><a href="https://mail.google.com/mail/h/">
+    <div class="title">Gmail HTML</div>
+    <div class="desc">Gmail alap HTML nezete - teljes email JS nelkul</div>
+    <div class="url">mail.google.com/mail/h/</div>
+  </a></div>
+  <div class="card"><a href="https://translate.google.com/">
+    <div class="title">Google Fordito</div>
+    <div class="desc">Forditasok - alap HTML form</div>
+    <div class="url">translate.google.com</div>
+  </a></div>
+  <div class="card"><a href="https://www.google.com/maps/@47.4,19.0,10z?force=lite">
+    <div class="title">Google Maps Lite</div>
+    <div class="desc">Terkep lite modban (korlatozott)</div>
+    <div class="url">maps.google.com (lite)</div>
+  </a></div>
+</div>
+</div>
+
+<!-- ============ TUDASTAR ============ -->
+<h2>Tudastar / Referencia</h2>
+<div class="grid">
+<div class="row">
+  <div class="card"><a href="https://hu.wikipedia.org/">
+    <div class="title">Wikipedia (magyar)</div>
+    <div class="desc">Magyar Wikipedia - tokeletes NetSurf-re</div>
+    <div class="url">hu.wikipedia.org</div>
+  </a></div>
+  <div class="card"><a href="https://en.wikipedia.org/">
+    <div class="title">Wikipedia (angol)</div>
+    <div class="desc">Angol Wikipedia</div>
+    <div class="url">en.wikipedia.org</div>
+  </a></div>
+  <div class="card"><a href="https://hu.wiktionary.org/">
+    <div class="title">Wikiszotar (magyar)</div>
+    <div class="desc">Szotar es nyelvi referencia</div>
+    <div class="url">hu.wiktionary.org</div>
+  </a></div>
+</div>
+<div class="row">
+  <div class="card"><a href="https://dict.sztaki.hu/">
+    <div class="title">SZTAKI Szotar</div>
+    <div class="desc">Magyar-angol szotar, egyszeru HTML</div>
+    <div class="url">dict.sztaki.hu</div>
+  </a></div>
+  <div class="card"><a href="https://dict.cc/">
+    <div class="title">dict.cc</div>
+    <div class="desc">Tobbnyelu szotar - egyszeru felület</div>
+    <div class="url">dict.cc</div>
+  </a></div>
+  <div class="card"><a href="https://simple.wikipedia.org/">
+    <div class="title">Simple Wikipedia</div>
+    <div class="desc">Egyszerusitett angol Wikipedia</div>
+    <div class="url">simple.wikipedia.org</div>
+  </a></div>
+</div>
+</div>
+
+<!-- ============ ESZKOZOK ============ -->
+<h2>Eszkozok</h2>
+<div class="grid">
+<div class="row">
+  <div class="card"><a href="https://rate.sx/huf">
+    <div class="title">rate.sx (HUF)</div>
+    <div class="desc">Valutaarfolyamok szovegesen - HUF</div>
+    <div class="url">rate.sx/huf</div>
+  </a></div>
+  <div class="card"><a href="https://rate.sx/eur">
+    <div class="title">rate.sx (EUR)</div>
+    <div class="desc">Valutaarfolyamok szovegesen - EUR</div>
+    <div class="url">rate.sx/eur</div>
+  </a></div>
+  <div class="card"><a href="https://www.timeanddate.com/worldclock/">
+    <div class="title">Vilagora</div>
+    <div class="desc">Idozonak, naptarak, visszaszamlalok</div>
+    <div class="url">timeanddate.com</div>
+  </a></div>
+</div>
+<div class="row">
+  <div class="card"><a href="https://ipinfo.io/">
+    <div class="title">IP Info</div>
+    <div class="desc">IP cim informaciok</div>
+    <div class="url">ipinfo.io</div>
+  </a></div>
+  <div class="card"><a href="https://qrenco.de/">
+    <div class="title">QR kod generator</div>
+    <div class="desc">ASCII QR kod generalas</div>
+    <div class="url">qrenco.de</div>
+  </a></div>
+  <div class="card"><a href="about:config">
+    <div class="title">NetSurf Beallitasok</div>
+    <div class="desc">about:config - bongeszo beallitasai</div>
+    <div class="url">about:config</div>
+  </a></div>
+</div>
+</div>
+
+<!-- ============ KONYVEK ============ -->
+<h2>Konyvek / Olvasas</h2>
+<div class="grid">
+<div class="row">
+  <div class="card"><a href="https://mek.oszk.hu/">
+    <div class="title">MEK</div>
+    <div class="desc">Magyar Elektronikus Konyvtar</div>
+    <div class="url">mek.oszk.hu</div>
+  </a></div>
+  <div class="card"><a href="https://www.gutenberg.org/browse/languages/hu">
+    <div class="title">Gutenberg (magyar)</div>
+    <div class="desc">Ingyenes e-konyvek magyarul</div>
+    <div class="url">gutenberg.org (hu)</div>
+  </a></div>
+  <div class="card"><a href="https://www.gutenberg.org/">
+    <div class="title">Project Gutenberg</div>
+    <div class="desc">70000+ ingyenes e-konyv</div>
+    <div class="url">gutenberg.org</div>
+  </a></div>
+</div>
+<div class="row">
+  <div class="card"><a href="https://hu.wikisource.org/">
+    <div class="title">Wikisource (magyar)</div>
+    <div class="desc">Magyar szabad szovegu muvek</div>
+    <div class="url">hu.wikisource.org</div>
+  </a></div>
+  <div class="card"><a href="https://standardebooks.org/">
+    <div class="title">Standard Ebooks</div>
+    <div class="desc">Szepen formázott ingyenes e-konyvek</div>
+    <div class="url">standardebooks.org</div>
+  </a></div>
+  <div class="card"><a href="https://theoldnet.com/">
+    <div class="title">The Old Net</div>
+    <div class="desc">Modern weboldalak egyszerusitve</div>
+    <div class="url">theoldnet.com</div>
+  </a></div>
+</div>
+</div>
+
+<p style="text-align:center; color:#888; font-size:11px; margin-top:20px; border-top:1px solid #ccc; padding-top:8px;">
+NetSurf for reMarkable 2 | Vellum csomag
+</p>
+
+</body>
+</html>
