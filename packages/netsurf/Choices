@@ -1,0 +1,21 @@
+homepage_url:about:welcome
+fb_download_directory:/home/root/Downloads
+fb_xochitl_restart_command:systemctl restart xochitl
+
+scale:150
+enable_javascript:0
+
+fb_face_sans_serif:/usr/share/fonts/ttf/noto/NotoSans-Regular.ttf
+fb_face_sans_serif_bold:/usr/share/fonts/ttf/noto/NotoSans-Bold.ttf
+fb_face_sans_serif_italic:/usr/share/fonts/ttf/noto/NotoSans-Regular.ttf
+fb_face_sans_serif_italic_bold:/usr/share/fonts/ttf/noto/NotoSans-Bold.ttf
+fb_face_serif:/usr/share/fonts/ttf/noto/NotoSerif-Regular.ttf
+fb_face_serif_bold:/usr/share/fonts/ttf/noto/NotoSerif-Bold.ttf
+fb_face_cursive:/usr/share/fonts/ttf/noto/NotoSerif-Italic.ttf
+fb_face_monospace:/usr/share/fonts/ttf/noto/NotoMono-Regular.ttf
+fb_face_monospace_bold:/usr/share/fonts/ttf/noto/NotoMono-Regular.ttf
+fb_face_fantasy:/usr/share/fonts/ttf/noto/NotoSans-Regular.ttf
+
+fb_toolbar_size:60
+fb_furniture_size:40
+fb_osk:1
